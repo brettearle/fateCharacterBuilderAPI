@@ -1,3 +1,4 @@
+const { request } = require('express')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
@@ -6,7 +7,7 @@ require('dotenv').config()
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
-    dbName = 'fatecharbuilder'
+    dbName = 'fateCharBuilder'
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
@@ -23,6 +24,15 @@ app.get('/', (req,res)=>{
     res.render(`index.ejs`)
 })
 
+app.post('/createCharacter', (req, res)=>{
+    db.collection('characters').insertOne({name: req.body.charName,
+    race: req.body.charRace, age: req.body.charAge})
+    .then(result => {
+        console.log('added character')
+        res.redirect('/')
+    })
+    .catch(error => console.log(error))
+})
 
 
 app.listen(PORT, ()=>{
