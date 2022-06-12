@@ -1,4 +1,3 @@
-const { request } = require('express')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
@@ -21,13 +20,18 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', (req,res)=>{
-    res.render(`index.ejs`)
+    db.collection('characters').find().toArray()
+    .then(data => {
+        res.render(`index.ejs`, { info : data })
+    })
+    .catch(error=>console.log(error))
+        
 })
 
 app.post('/createCharacter', (req, res)=>{
     db.collection('characters').insertOne({name: req.body.charName,
     race: req.body.charRace, age: req.body.charAge})
-    .then(result => {
+    .then(()=> {
         console.log('added character')
         res.redirect('/')
     })

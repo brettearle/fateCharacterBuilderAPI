@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fate Characters</title>
 </head>
 <body>
-    <h1>this is index.ejs</h1>
+    <h1>Fate Character Builder</h1>
     <form action="/createCharacter" method="POST">
         <input type="text" placeholder="Character Name" name="charName">
         <input type="text" placeholder="Character Race" name="charRace">
         <input type="number" placeholder="Character Age" name="charAge">
         <input type="submit">
     </form>
+
+    <ul>
+        <% for(let i=0; i < info.length; i++) {%>
+            <li class="characters">
+                <span><%= info[i].name %></span>
+                <span><%= info[i].race %></span>
+                <span><%= info[i].age %></span>
+                <!-- <span class='fa fa-thumbs-up'></span>
+                <span class='fa fa-trash'></span> -->
+            </li>
+        <% } %>
+    </ul>
 </body>
 </html>
