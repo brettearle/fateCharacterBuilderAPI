@@ -1,4 +1,6 @@
+const { request } = require('express')
 const express = require('express')
+const { ObjectId } = require('mongodb')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 const PORT = process.env.PORT || 8000
@@ -34,6 +36,16 @@ app.post('/createCharacter', (req, res)=>{
     .then(()=> {
         console.log('added character')
         res.redirect('/')
+    })
+    .catch(error => console.log(error))
+})
+
+app.delete('/deleteCharacter', (req,res)=>{
+    console.log(req.body.ids)
+    db.collection('characters').deleteOne({_id: ObjectId(req.body.ids.toString()) })
+    .then(result => {
+        console.log('deleted character')
+        res.json('deleted character')
     })
     .catch(error => console.log(error))
 })

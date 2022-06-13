@@ -10,7 +10,7 @@
     <title>Fate Characters</title>
 </head>
 <body>
-    <h1 class="text-3xl font-bold underline m-5">Fate Character Builder</h1>
+    <h1 class="text-5xl font-bold underline m-5">Fate Character Builder</h1>
     <form action="/createCharacter" method="POST">
         <input type="text" placeholder="Character Name" name="charName">
         <input type="text" placeholder="Character Race" name="charRace">
@@ -20,7 +20,7 @@
 
     <ul>
         <% for(let i=0; i < info.length; i++) {%>
-            <li class="characters">
+            <li id=<%= info[i]._id  %>  class="characters">
                 <span><%= info[i].name %></span>
                 <span><%= info[i].race %></span>
                 <span><%= info[i].age %></span>
