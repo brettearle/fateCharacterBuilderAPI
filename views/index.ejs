@@ -10,22 +10,28 @@
     <title>Fate Characters</title>
 </head>
 <body>
-    <h1 class="text-5xl font-bold underline m-5">Fate Character Builder</h1>
-    <form action="/createCharacter" method="POST">
+    <h1 class="text-3xl font-bold underline m-5">Fate Character Builder</h1>
+    <form action="/createCharacter" method="POST" class="m-5">
         <input type="text" placeholder="Character Name" name="charName">
         <input type="text" placeholder="Character Race" name="charRace">
         <input type="number" placeholder="Character Age" name="charAge">
         <input type="submit">
     </form>
 
-    <ul>
+    <ul class="m-5">
         <% for(let i=0; i < info.length; i++) {%>
             <li id=<%= info[i]._id  %>  class="characters">
                 <span><%= info[i].name %></span>
                 <span><%= info[i].race %></span>
                 <span><%= info[i].age %></span>
-                <span class='fa fa-thumbs-up'></span>
                 <span class='fa fa-trash'></span>
+                <form action="/updateCharacter" method="PUT">
+                    <input type="text" value="<%= info[i].name %>" name="updatedName">
+                    <input type="text" value="<%= info[i].race %>" name="updatedRace">
+                    <input type="number" value="<%= info[i].age %>" name="updatedAge">
+                    <input type="submit" class="updateBTN" value="Update">
+                    <input type="hidden" name="_id" value="<%= info[i]._id %>">
+                </form>
             </li>
         <% } %>
     </ul>

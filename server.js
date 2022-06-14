@@ -50,6 +50,21 @@ app.delete('/deleteCharacter', (req,res)=>{
     .catch(error => console.log(error))
 })
 
+app.put('/updateCharacter', (req, res)=>{
+    console.log(req.body)
+    db.collection('characters').updateOne({_id: ObjectId(req.body.ids.toString())},
+    {$set:{
+        name: req.body.uName,
+        race: req.body.uRace,
+        age: req.body.uAge
+    }})
+    .then(result=>{
+        console.log("updated")
+        res.json('updated')
+    })
+    .catch(error=>console.log(error))
+})
+
 
 app.listen(PORT, ()=>{
     console.log(`listening on port ${PORT}`)
