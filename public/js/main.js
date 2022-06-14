@@ -1,12 +1,12 @@
 
 const deleteText = document.querySelectorAll('.fa-trash')
-const thumbText = document.querySelectorAll('.updateBTN')
+const updateBTN = document.querySelectorAll('.updateBTN')
 
 Array.from(deleteText).forEach((element)=>{
     element.addEventListener('click', deleteCharacter)
 })
 
-Array.from(thumbText).forEach((element)=>{
+Array.from(updateBTN).forEach((element)=>{
     element.addEventListener('click', updateCharacter)
     element.addEventListener('click', (ev)=>{
         ev.preventDefault()
