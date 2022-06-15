@@ -1,9 +1,14 @@
 
 const deleteText = document.querySelectorAll('.fa-trash')
 const updateBTN = document.querySelectorAll('.updateBTN')
+const editPen = document.querySelectorAll('.fa-pen')
 
 Array.from(deleteText).forEach((element)=>{
     element.addEventListener('click', deleteCharacter)
+})
+
+Array.from(editPen).forEach((element)=>{
+    element.addEventListener('click', toggleHidden)
 })
 
 Array.from(updateBTN).forEach((element)=>{
@@ -12,6 +17,11 @@ Array.from(updateBTN).forEach((element)=>{
         ev.preventDefault()
     })
 })
+
+function toggleHidden(){
+    const updateForm = this.parentNode.nextElementSibling
+    updateForm.classList.toggle('hidden')
+}
 
 async function updateCharacter(){
     const uName = this.parentNode.updatedName.value

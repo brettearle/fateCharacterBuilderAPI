@@ -4,9 +4,8 @@
   "description": "build ttrpg characters for fate game",
   "main": "server.js",
   "scripts": {
-    "tailwindcss": "npx tailwindcss -i ./public/css/style.css -o ./public/dist/output.css --watch",
-    "server":"node server.js",
-    "start": "tailwindcss && node server"
+    "prestart": "npx tailwindcss -i ./public/css/style.css -o ./public/dist/output.css",
+    "start": "node server"
   },
   "author": "Brett",
   "license": "ISC",
