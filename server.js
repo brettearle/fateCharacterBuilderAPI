@@ -40,7 +40,6 @@ app.post('/createCharacter', (req, res)=>{
 })
 
 app.delete('/deleteCharacter', (req,res)=>{
-    console.log(req.body.ids)
     db.collection('characters').deleteOne({_id: ObjectId(req.body.ids.toString()) })
     .then(result => {
         console.log('deleted character')
