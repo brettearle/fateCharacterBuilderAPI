@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="/dist/output.css" rel="stylesheet">
     
-    <title>Fate Characters</title>
+    <title>Fate NPC tracker</title>
 </head>
-<body class="bg-slate-100 columns-2">
-    <h1 class="text-3xl font-bold underline m-5">Fate Character Builder</h1>
-    <section class="break-after-column border-2 border-slate-500 m-5 rounded">
+<body class="bg-slate-100 flex flex-col items-center justify-items-center">
+    <h1 class="flex-initial w-2/3 max-w-xl text-3xl font-bold underline m-5">Fate NPC tracker</h1>
+    <section class="flex-initial w-2/3 max-w-xl break-after-column border-2 border-slate-500 m-5 rounded">
         <h2 class="text-2xl font-bold underline my-5 mx-7">Add a character</h2>
         <form action="/createCharacter" method="POST" class="m-5">
             <input type="text" placeholder="Character Name" name="charName" class="m-3">
@@ -20,7 +20,7 @@
             <input type="submit" class="m-3 hover:bg-slate-300 bg-slate-200 rounded-lg px-3 py-1">
         </form>
     </section>
-    <section class="border-2 border-slate-500 m-5 rounded">
+    <section class="flex-initial w-2/3 max-w-xl border-2 border-slate-500 m-5 rounded">
         <h2 class="text-2xl font-bold underline m-3">List of Current Characters</h2>
         <ul>
             <% for(let i=0; i < info.length; i++) {%>
