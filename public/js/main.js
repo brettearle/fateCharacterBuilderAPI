@@ -50,7 +50,8 @@ async function updateCharacter(){
 
 
 async function deleteCharacter(){
-    const ids = this.parentNode.id
+    const ids = this.parentNode.parentNode.id
+    console.log(ids)
     try{
         const response = await fetch('deleteCharacter',{
             method: 'delete',
